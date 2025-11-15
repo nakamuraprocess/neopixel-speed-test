@@ -9,33 +9,33 @@ COLOR_NONE = Color(0, 0, 0)
 thread_1_loop = True
 thread_2_loop = True
 
-def color_wipe_forward(strip, color):
+def color_wipe_forward(strip):
     for i in range(LED_MAX_SIZE):
         if i == 0:
             strip.set_pixel_color(LED_MAX_SIZE-1, COLOR_NONE)
         else:
             strip.set_pixel_color(i-1, COLOR_NONE)
-        strip.set_pixel_color(i, color)
+        strip.set_pixel_color(i, COLOR_BASE)
         strip.show()
 
-def color_wipe_reverse(strip, color):
+def color_wipe_reverse(strip):
     for i in reversed(range(LED_MAX_SIZE)):
         if i == LED_MAX_SIZE-1:
             strip.set_pixel_color(0, COLOR_NONE)
         else:
             strip.set_pixel_color(i+1, COLOR_NONE)
-        strip.set_pixel_color(i, color)
+        strip.set_pixel_color(i, COLOR_BASE)
         strip.show()
 
 def thread_strip_1():
     while thread_1_loop:
-        color_wipe_forward(strip_1, COLOR_BASE)
-        color_wipe_reverse(strip_1, COLOR_BASE)
+        color_wipe_forward(strip_1)
+        color_wipe_reverse(strip_1)
 
 def thread_strip_2():
     while thread_2_loop:
-        color_wipe_forward(strip_2, COLOR_BASE)
-        color_wipe_reverse(strip_2, COLOR_BASE)
+        color_wipe_forward(strip_2)
+        color_wipe_reverse(strip_2)
 
 if __name__ == "__main__":
     strip_1 = WS2812SpiDriver(spi_bus=0, spi_device=0, led_count=LED_MAX_SIZE).get_strip()

@@ -4,22 +4,22 @@ LED_MAX_SIZE = 120
 COLOR_BASE = Color(255, 255, 255)
 COLOR_NONE = Color(0, 0, 0)
 
-def color_wipe_forward(strip, color):
+def color_wipe_forward(strip):
     for i in range(LED_MAX_SIZE):
         if i == 0:
             strip.set_pixel_color(LED_MAX_SIZE-1, COLOR_NONE)
         else:
             strip.set_pixel_color(i-1, COLOR_NONE)
-        strip.set_pixel_color(i, color)
+        strip.set_pixel_color(i, COLOR_BASE)
         strip.show()
 
-def color_wipe_reverse(strip, color):
+def color_wipe_reverse(strip):
     for i in reversed(range(LED_MAX_SIZE)):
         if i == LED_MAX_SIZE-1:
             strip.set_pixel_color(0, COLOR_NONE)
         else:
             strip.set_pixel_color(i+1, COLOR_NONE)
-        strip.set_pixel_color(i, color)
+        strip.set_pixel_color(i, COLOR_BASE)
         strip.show()
 
 if __name__ == "__main__":
@@ -27,8 +27,8 @@ if __name__ == "__main__":
 
     try:
         while True:
-            color_wipe_forward(strip, COLOR_BASE)
-            color_wipe_reverse(strip, COLOR_BASE)
+            color_wipe_forward(strip)
+            color_wipe_reverse(strip)
 
     finally:
         strip.clear()
