@@ -104,7 +104,11 @@ https://github.com/earlephilhower/arduino-pico/releases/download/global/package_
 ```
 speed_test_single.ino
 ```
-
+### 使用PIN
+```
+strip_1 DIN = GPIO2
+strip_2 DIN = GPIO3
+```
 ## Freenove ESP32 WROOM
 
 Please wait...
