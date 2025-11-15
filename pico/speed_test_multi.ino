@@ -1,4 +1,6 @@
 #include <Adafruit_NeoPixel.h>
+#include "pico/stdlib.h"
+#include "pico/multicore.h"
 
 #define LED_MAX_SIZE 120
 
@@ -36,6 +38,12 @@ void colorWipeReverse(Adafruit_NeoPixel &strip){
   }
 }
 
+void core1_task() {
+  while (true) {
+    colorWipeForward(strip2);
+    colorWipeReverse(strip2);
+  }
+}
 
 void setup() {
   strip1.begin();
@@ -45,11 +53,12 @@ void setup() {
   strip2.begin();
   strip2.show();
   strip2.setBrightness(255);
+
+  multicore_launch_core1(core1_task);
 }
 
 void loop() {
   colorWipeForward(strip1);
   colorWipeReverse(strip1);
-  colorWipeForward(strip2);
-  colorWipeReverse(strip2);
+
 }
