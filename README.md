@@ -51,7 +51,20 @@ sudo .venv/bin/python3 speed_test_single.py
 ```
 sudo .venv/bin/python3 speed_test_multi.py
 ```
-#### NumPyが見つからないエラーが出る場合
+### 使用PIN
+strip_1 DIN = GPIO10 (19)
+strip_2 DIN = GPIO20 (38) 
+
+#### ※2チャンネルのLEDストリップを使う場合は下記を追記
+```
+sudo nano /boot/firmware/config.txt
+```
+```
+dtoverlay=spi0-1cs
+dtoverlay=spi1-1cs
+```
+
+#### ※NumPyが見つからないエラーが出る場合
 ```
 sudo apt update
 ```
