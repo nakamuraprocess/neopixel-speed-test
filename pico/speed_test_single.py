@@ -1,4 +1,3 @@
-import time
 import board
 import neopixel
 
@@ -25,6 +24,11 @@ def color_wipe_reverse(strip):
             pixels[i+1] = COLOR_NONE
         pixels[i] = COLOR_BASE
         pixels.show()
+
+def color_wipe_all(pixels):
+    for i in range(LED_MAX_SIZE):
+        pixels[i] = COLOR_BASE
+    pixels.show()
 
 while True:
     color_wipe_forward(pixels)

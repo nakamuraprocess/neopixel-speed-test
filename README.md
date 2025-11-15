@@ -25,6 +25,11 @@ sudo .venv/bin/python3 speed_test_single.py
 ```
 sudo .venv/bin/python3 speed_test_multi.py
 ```
+### 使用PIN
+```
+strip_1 DIN = GPIO18
+strip_2 DIN = GPIO21
+```
 
 ## Raspberry Pi 5
 
@@ -52,8 +57,10 @@ sudo .venv/bin/python3 speed_test_single.py
 sudo .venv/bin/python3 speed_test_multi.py
 ```
 ### 使用PIN
+```
 strip_1 DIN = GPIO10 (19)
 strip_2 DIN = GPIO20 (38) 
+```
 
 #### ※2チャンネルのLEDストリップを使う場合は下記を追記
 ```
@@ -74,20 +81,29 @@ sudo apt install libopenblas-dev
 
 ## Raspberry Pi Pico
 
-### OSとパッケージインストール
+1. Arduino IDE に Raspberry Pi Pico（RP2040）を追加
+* Arduino IDE を開き、ファイル → 環境設定を開く。
+* 「追加のボードマネージャURL」に以下を追加：
+```
+https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+```
 
-1. CircuitPython for Raspberry Pi Picoをダウンロード
+2. ボードをインストール
+
+* ツール → ボード → ボードマネージャ
+* 検索欄で「rp2040」または「pico」
+* 「Raspberry Pi Pico/RP2040 by Earle Philhower」をインストール
+
+3. Adafruit NeoPixel ライブラリをインストール
+
+* スケッチ → ライブラリをインクルード → ライブラリを管理
+* 「Adafruit NeoPixel」で検索
+* インストール
+
+### 実行
 ```
-https://circuitpython.org/board/raspberry_pi_pico/
+speed_test_single.ino
 ```
-2. BOOTSEL で接続し、.uf2ファイルをドラッグしてインストール
-3. 自動的に CIRCUITPY ドライブがマウントされる
-4. adafruit-circuitpython-bundle をダウンロード（バージョンはCircuitPythonと合わせる）
-```
-https://circuitpython.org/libraries
-```
-5. /CIRCUITPY/lib に neopixel.mpy をコピー
-6. 実行ソースコードは /CIRCUITPY/code.py に書いて保存
 
 ## Freenove ESP32 WROOM
 
