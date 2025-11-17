@@ -112,3 +112,10 @@ strip_2 DIN = GPIO3
 ## Freenove ESP32 WROOM
 
 Please wait...
+
+## 速度計測結果
+
+|         |  pi4  |  pi5  | pico  | pico2 |
+|---------|-------|-------|-------|-------|
+| 1 strip | 0.58s | 0.00s | 0.00s | 0.00s |
+| 2 strip | 1.13s | 0.00s | 0.00s | 0.00s |
