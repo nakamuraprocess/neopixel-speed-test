@@ -46,7 +46,9 @@ def thread_strip_2():
 
 if __name__ == "__main__":
     strip_1 = WS2812SpiDriver(spi_bus=0, spi_device=0, led_count=LED_MAX_SIZE).get_strip()
+    strip_1.set_brightness(1.0)
     strip_2 = WS2812SpiDriver(spi_bus=1, spi_device=0, led_count=LED_MAX_SIZE).get_strip()
+    strip_2.set_brightness(1.0)
 
     thread_1 = threading.Thread(target=thread_strip_1)
     thread_2 = threading.Thread(target=thread_strip_2)

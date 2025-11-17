@@ -32,6 +32,7 @@ def color_wipe_reverse(strip):
 
 if __name__ == "__main__":
     strip = WS2812SpiDriver(spi_bus=0, spi_device=0, led_count=LED_MAX_SIZE).get_strip()
+    strip.set_brightness(1.0)
 
     try:
         color_wipe_forward(strip)
