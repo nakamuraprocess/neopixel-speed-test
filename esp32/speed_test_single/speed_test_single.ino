@@ -56,5 +56,7 @@ void loop() {
     colorWipeReverse(strip);
     bLoop = false;
   }
-  Serial.println(String("TIME: ") + float(timeFinish - timeStart) / 1000 + String(" sec"));
+  if(timeFinish > 0.0 && timeStart > 0.0){
+    Serial.println(String("TIME: ") + float(timeFinish - timeStart) / 1000 + String(" sec"));
+  }
 }

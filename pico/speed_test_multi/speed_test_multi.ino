@@ -1,15 +1,14 @@
 #include <Adafruit_NeoPixel.h>
+#include "pico/stdlib.h"
+#include "pico/multicore.h"
 
 #define LED_MAX_SIZE 120
 
-Adafruit_NeoPixel strip1(LED_MAX_SIZE, 5, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip2(LED_MAX_SIZE, 15, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip1(LED_MAX_SIZE, 2, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip2(LED_MAX_SIZE, 3, NEO_GRB + NEO_KHZ800);
 
 uint32_t COLOR_BASE = strip1.Color(255, 255, 255);
 uint32_t COLOR_NONE = strip1.Color(0, 0, 0);
-
-TaskHandle_t Task1_handle;
-TaskHandle_t Task2_handle;
 
 bool bLoop = true;
 unsigned long timeStart = 0;
@@ -26,7 +25,7 @@ void colorWipeForward(Adafruit_NeoPixel &strip){
     }
     strip.setPixelColor(i, COLOR_BASE);
     strip.show();
-    vTaskDelay(1);
+    delay(1);
   }
 }
 
@@ -41,16 +40,11 @@ void colorWipeReverse(Adafruit_NeoPixel &strip){
       }
       strip.setPixelColor(i, COLOR_BASE);
       strip.show();
-      vTaskDelay(1);
+      delay(1);
   }
 }
 
-void task1(void *pvParameters) {
-  colorWipeForward(strip1);
-  colorWipeReverse(strip1);
-}
-
-void task2(void *pvParameters) {
+void core1_task() {
   colorWipeForward(strip2);
   colorWipeReverse(strip2);
 }
@@ -65,10 +59,14 @@ void setup() {
   strip2.show();
   strip2.setBrightness(255);
 
-  xTaskCreatePinnedToCore(task1, "Task1", 4000, NULL, 3, &Task1_handle, 0);
-  xTaskCreatePinnedToCore(task2, "Task2", 4000, NULL, 3, &Task2_handle, 1);
+  multicore_launch_core1(core1_task);
 }
 
 void loop() {
+  if(bLoop){
+    colorWipeForward(strip1);
+    colorWipeReverse(strip1);
+    bLoop = false;
+  }
   Serial.println(String("TIME: ") + float(timeFinish - timeStart) / 1000 + String(" sec"));
 }
