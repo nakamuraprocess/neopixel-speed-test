@@ -104,6 +104,9 @@ https://github.com/earlephilhower/arduino-pico/releases/download/global/package_
 ```
 speed_test_single.ino
 ```
+```
+speed_test_multi.ino
+```
 ### 使用PIN
 ```
 strip_1 DIN = GPIO2
@@ -111,8 +114,37 @@ strip_2 DIN = GPIO3
 ```
 ## Freenove ESP32 WROOM
 
-Please wait...
+1. Arduino IDE に ESP32 ボードを追加
 
+* Arduino IDE を開き、ファイル → 環境設定を開く。
+* 「追加のボードマネージャURL」に以下を追加：
+
+```
+https://dl.espressif.com/dl/package_esp32_index.json
+```
+2. ボードをインストール
+
+* ツール → ボード → ボードマネージャ
+* 検索欄で「esp32 dev module」
+* 「ESP32 Dev Module」をインストール
+
+3. Adafruit NeoPixel ライブラリをインストール
+
+* スケッチ → ライブラリをインクルード → ライブラリを管理
+* 「Adafruit NeoPixel」で検索
+* インストール
+### 実行
+```
+speed_test_single.ino
+```
+```
+speed_test_multi.ino
+```
+### 使用PIN
+```
+strip_1 DIN = GPIO5
+strip_2 DIN = GPIO15
+```
 ## 速度計測結果
 
 |         |  pi4  |  pi5  | pico  | pico2 | esp32 |
