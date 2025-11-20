@@ -79,7 +79,7 @@ sudo apt update
 sudo apt install libopenblas-dev
 ```
 
-## Raspberry Pi Pico
+## Raspberry Pi Pico / Pico 2
 
 1. Arduino IDE に Raspberry Pi Pico（RP2040）を追加
 * Arduino IDE を開き、ファイル → 環境設定を開く。
@@ -147,7 +147,8 @@ strip_2 DIN = GPIO15
 ```
 ## 速度計測結果
 
-|         |  pi4  |  pi5  | pico  | pico2 | esp32 |
-|---------|-------|-------|-------|-------|-------|
-| 1 strip | 0.58s | 0.47s | 0.55s | 0.00s | 0.48s |
-| 2 strip | 1.13s | 0.47s | 0.55s | 0.00s | 1.21s |
+|               |  Pi 4  |  Pi 5  |  Pico  | pico 2 | ESP32 | Teensy 4.0 | Teensy 4.1 |
+|---------------|--------|--------|--------|--------|-------|------------|------------|
+| 1 strip (sec) | 0.58s  | 0.47s  | 0.55s  | 0.55s  | 0.48s |   0.24s    |------------|
+| 2 strip (sec) | 1.13s  | 0.47s  | 0.55s  | 0.55s  | 1.21s |------------|------------|
+|  price (yen)  |--------|--------|--------|--------|-------|------------|------------|

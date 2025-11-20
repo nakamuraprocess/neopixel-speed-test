@@ -42,6 +42,12 @@ void colorWipeReverse(Adafruit_NeoPixel &strip){
   }
 }
 
+void colorWipeAll(Adafruit_NeoPixel &strip){
+  for(int i = 0; i < LED_MAX_SIZE; i++){
+    strip.setPixelColor(i, COLOR_NONE);
+    strip.show();
+  }
+}
 
 void setup() {
   Serial.begin(9600);
@@ -58,5 +64,6 @@ void loop() {
   }
   if(timeFinish > 0.0 && timeStart > 0.0){
     Serial.println(String("TIME: ") + float(timeFinish - timeStart) / 1000 + String(" sec"));
+    colorWipeAll(strip1);
   }
 }
