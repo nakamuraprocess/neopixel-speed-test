@@ -15,11 +15,11 @@ unsigned long timeFinish = 0;
 void colorWipeForward(Adafruit_NeoPixel &strip){
   for(int i = 0; i < LED_MAX_SIZE; i++){
     if(i == 0){
-        timeStart = millis();
-        strip.setPixelColor(LED_MAX_SIZE-1, COLOR_NONE);
+      timeStart = millis();
+      strip.setPixelColor(LED_MAX_SIZE-1, COLOR_NONE);
     }
     else{
-        strip.setPixelColor(i-1, COLOR_NONE);
+      strip.setPixelColor(i-1, COLOR_NONE);
     }
     strip.setPixelColor(i, COLOR_BASE);
     strip.show();
@@ -28,15 +28,15 @@ void colorWipeForward(Adafruit_NeoPixel &strip){
 
 void colorWipeReverse(Adafruit_NeoPixel &strip){
   for(int i = LED_MAX_SIZE; i >= 0; i--){
-      if(i == LED_MAX_SIZE-1){
-        timeFinish = millis();
-        strip.setPixelColor(0, COLOR_NONE);
-      }
-      else{
-        strip.setPixelColor(i+1, COLOR_NONE);
-      }
-      strip.setPixelColor(i, COLOR_BASE);
-      strip.show();
+    if(i == LED_MAX_SIZE-1){
+      timeFinish = millis();
+      strip.setPixelColor(0, COLOR_NONE);
+    }
+    else{
+      strip.setPixelColor(i+1, COLOR_NONE);
+    }
+    strip.setPixelColor(i, COLOR_BASE);
+    strip.show();
   }
 }
 
