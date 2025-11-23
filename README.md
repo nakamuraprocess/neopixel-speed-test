@@ -176,4 +176,5 @@ strip_2 DIN = GPIO6
 |  price (yen)  | 10,980 | 12,900 | 1,470  | 2,080  | 1,680  | 6,980  | 8,604 |
 
 #### ※T = Teensy
+#### ※PicoとTeensyはforループの中にdelay(1)が必要
 #### ※priceはAmazonでの実売価格（2025年11月）
