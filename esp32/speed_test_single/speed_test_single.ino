@@ -23,7 +23,6 @@ void colorWipeForward(Adafruit_NeoPixel &strip){
     }
     strip.setPixelColor(i, COLOR_BASE);
     strip.show();
-    delay(1);
   }
 }
 
@@ -38,7 +37,6 @@ void colorWipeReverse(Adafruit_NeoPixel &strip){
       }
       strip.setPixelColor(i, COLOR_BASE);
       strip.show();
-      delay(1);
   }
 }
 

@@ -31,16 +31,16 @@ void colorWipeForward(Adafruit_NeoPixel &strip){
 
 void colorWipeReverse(Adafruit_NeoPixel &strip){
   for(int i = LED_MAX_SIZE; i >= 0; i--){
-      if(i == LED_MAX_SIZE-1){
-        timeFinish = millis();
-        strip.setPixelColor(0, COLOR_NONE);
-      }
-      else{
-        strip.setPixelColor(i+1, COLOR_NONE);
-      }
-      strip.setPixelColor(i, COLOR_BASE);
-      strip.show();
-      delay(1);
+    if(i == LED_MAX_SIZE-1){
+      timeFinish = millis();
+      strip.setPixelColor(0, COLOR_NONE);
+    }
+    else{
+      strip.setPixelColor(i+1, COLOR_NONE);
+    }
+    strip.setPixelColor(i, COLOR_BASE);
+    strip.show();
+    delay(1);
   }
 }
 
